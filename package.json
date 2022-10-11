@@ -1,9 +1,9 @@
 {
-  "name": "web3-cardano-token",
+  "name": "web3-cardano-token-rc",
   "version": "0.0.12",
   "private": false,
   "description": "Web3 Token is a new way to authenticate users in hybrid dApps using signed messages.",
-  "author": "pyropy",
+  "author": "reitcircles",
   "scripts": {
     "build": "webpack --mode=production --progress"
   },
@@ -37,9 +37,9 @@
     "not dead"
   ],
   "bugs": {
-    "url": "https://github.com/pyropy/web3-cardano-token/issues"
+    "url": "https://github.com/reitcircles/web3-cardano-token-rc/issues"
   },
-  "homepage": "https://github.com/pyropy/web3-cardano-token#readme",
+  "homepage": "https://github.com/reitcircles/web3-cardano-token-rc#readme",
   "keywords": [
     "auth",
     "token",
@@ -48,9 +48,9 @@
     "web3",
     "blockchain"
   ],
-  "license": "MIT",
+  "license": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pyropy/web3-cardano-token"
+    "url": "git+https://github.com/reitcircles/web3-cardano-token-rc"
   }
 }

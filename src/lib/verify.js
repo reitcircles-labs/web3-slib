@@ -28,14 +28,16 @@ export const verify = async (token) => {
     throw new Error("Token malformed (empty message)");
   }
 
-  if (!signature || !signature.length) {
+  if (!signature || !signature.sign.length) {
     throw new Error("Token malformed (empty signature)");
   }
 
   await Loader.load();
 
+  // TODO:One should verify the signature as well as it has been transported.
+    
   const message = Loader.Message.COSESign1.from_bytes(
-    Buffer.from(Buffer.from(signature, "hex"), "hex")
+    Buffer.from(Buffer.from(signature.sign, "hex"), "hex")
   );
 
   const headermap = message.headers().protected().deserialized_headers();
@@ -52,5 +54,5 @@ export const verify = async (token) => {
     throw new Error("Token expired");
   }
 
-  return { address: address.to_bech32(), body: parsed_body };
+    return { address: address.to_bech32(), body: parsed_body, signature:signature };
 };

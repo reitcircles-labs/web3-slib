@@ -18,28 +18,28 @@ export const sign = async (signer, expires_in = '1d', body = {}) => {
     ...body,
   };
 
+    
   const msg = buildMessage(data);
   
   if(typeof signer === 'function') {
-    var signature = await signer(msg);
+    var signObj = await signer(msg);
   } else {
     throw new Error('"signer" argument should be a function that returns a signature eg: "msg => web3.eth.personal.sign(msg, <YOUR_ADDRESS>)"')
   }
   
-  if (typeof(signature) === "object") {
-    signature = signature.signature
-  }
-
-  if(typeof signature !== 'string') {
+  if(typeof signObj.signature !== 'string') {
     throw new Error('"signer" argument should be a function that returns a signature string (Promise<string>)')
   }
 
   const token = Base64.encode(JSON.stringify({
-    signature,
-    body: msg,
+      signature:{
+          "publicKey": signObj.key,
+          "sign": signObj.signature
+      }
+      body: msg,
   }))
 
-  return token;
+    return token;
 }
 
 
