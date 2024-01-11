@@ -1,5 +1,8 @@
 import Base64 from 'base-64';
 import { timeSpan } from './timespan';
+import jwt from 'jsonwebtoken';
+
+const { sign, verify } = jwt;
 
 /**
  * 
@@ -32,13 +35,21 @@ export const sign = async (signer, expires_in = '1d', body = {}) => {
         throw new Error('"signer" argument should be a function that returns a signature string (Promise<string>)')
     }
 
-    const token = Base64.encode(JSON.stringify({
-        signature:{
-            "publicKey": signObj.key,
-            "sign": signObj.signature
-        }
-        body: msg,
-    }))
+    //Now create a proper jwt token using the signature encapsulated    
+    const signature = {
+        'sign': signObj.signature,
+        'key': signObj.key
+    }
+
+    const token = sign(signature, "secret", {expiresIn: 300})
+        
+    // const token = Base64.encode(JSON.stringify({
+    //     signature:{
+    //         "publicKey": signObj.key,
+    //         "sign": signObj.signature
+    //     }
+    //     body: msg,
+    // }))
 
     return token;
 }

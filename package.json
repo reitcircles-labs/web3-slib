@@ -1,14 +1,14 @@
 {
-  "name": "web3-cardano-token-rc",
-  "version": "0.0.12",
+  "name": "web3-slib",
+  "version": "1.0.0",
   "private": false,
-  "description": "Web3 Token is a new way to authenticate users in hybrid dApps using signed messages.",
+  "description": "For signing using cardano wallet and with ",
   "author": "reitcircles",
   "scripts": {
     "build": "webpack --mode=production --progress"
   },
   "module": "src/lib.js",
-  "main": "dist/web3-cardano-token.js",
+  "main": "dist/web3-slib.js",
   "dependencies": {
     "@emurgo/cardano-serialization-lib-browser": "^9.1.2",
     "@emurgo/cardano-serialization-lib-nodejs": "^9.1.2",
@@ -17,6 +17,7 @@
     "buffer": "^6.0.3",
     "emurgo-message-signing": "^0.1.0",
     "emurgo-message-signing-nodejs": "^0.1.0",
+    "jsonwebtoken": "^9.0.2",
     "ms": "^2.1.3",
     "parse-headers": "^2.0.4",
     "to-hex": "0.0.17"
@@ -51,6 +52,6 @@
   "license": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reitcircles/web3-cardano-token-rc"
+    "url": "git+https://github.com/reitcircles/web3-cardano-token-rc.git"
   }
 }
